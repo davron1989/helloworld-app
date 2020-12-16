@@ -2,7 +2,7 @@
 FROM python:3 
 
 ## Copy all packages to /app dir
-COPY  .   /app 
+COPY . /app 
 
 ## Change the default folder 
 WORKDIR  /app 
@@ -14,4 +14,4 @@ RUN pip install  -r  /app/requirements.txt
 EXPOSE 5000 
 
 ## run this command when container started 
-CMD ["bin/bash",  "-c",   "python   /app/app.py"]
+CMD ["/bin/sh", "-c", "python /app/app.py"]
