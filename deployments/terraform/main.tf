@@ -1,0 +1,16 @@
+module "helm_deploy" { 
+  source = "fuchicorp/chart/helm" 
+
+  deployment_name        = "hello-world" 
+  deployment_environment = "${var.deployment.environment}" 
+  deployment_endpoint   = "${lookup(var.deployment_endpoint, "${var.deployment_environment}")}.${var.google.domain_name}" 
+  deployment_path        = "hello-world" 
+
+  template_custom_vars = { 
+    deployment_image = "${var.deployments.iamge}" 
+  } 
+} 
+
+output "application_endpoint"{ 
+    value = "${lookup(var.deployment_endpoint, "${var.deployment_environment}")}.${var.google.domain_name}" 
+} 
