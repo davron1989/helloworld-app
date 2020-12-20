@@ -5,8 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: nginx
-  tag: stable
+  repository: ${deployment_image}
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -24,14 +23,14 @@ ingress:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     # kubernetes.io/tls-acme: "true"
   hosts:
-  - host: dev.hello.davrononline.com
+  - host: ${deployment_endpoint}
     paths:
     - /
 
   tls:
   - secretName: hello-world-tls
     hosts:
-      - dev.hello.davrononline.com
+    - ${deployment_endpoint}
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
