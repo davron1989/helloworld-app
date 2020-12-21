@@ -3,7 +3,7 @@ module "helm_deploy" {
 
   deployment_name        = "hello-world" 
   deployment_environment = "${var.deployment.environment}" 
-  deployment_endpoint   = "${lookup(var.deployment_endpoint, "${var.deployment_environment}")}.${var.google.domain_name}" 
+  deployment_endpoint   = "${lookup(var.deployment_endpoint, "${var.deployment_environment}")}.${var.google_domain_name}" 
   deployment_path        = "hello-world" 
 
   template_custom_vars = { 
@@ -12,5 +12,5 @@ module "helm_deploy" {
 } 
 
 output "application_endpoint"{ 
-    value = "${lookup(var.deployment_endpoint, "${var.deployment_environment}")}.${var.google.domain_name}" 
+    value = "${lookup(var.deployment_endpoint, "${var.deployment_environment}")}.${var.google_domain_name}" 
 } 
