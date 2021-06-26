@@ -5,7 +5,8 @@ app  = Flask(__name__)
 def   hello_world(): 
     return  jsonify({ 
         'messege' : 'hello world', 
-        'environment': os.environ.get('ENVIRONMENT') 
+        'environment': os.environ.get('ENVIRONMENT')
+        'namespace': os.environ.get('NAMESPACE') 
     }) 
 
 if  __name__ == '__main__': 
